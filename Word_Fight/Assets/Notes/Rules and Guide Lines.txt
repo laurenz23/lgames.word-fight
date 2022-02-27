@@ -1,0 +1,19 @@
+VERSIONING: 
+	- MAJOR is incremented when you make breaking API changes
+	- MINOR is incremented when you add new functionality without breaking the existing API or functionality
+	- PATCH is incremented when you make backwards-compatible bug fixes
+
+	1. New projects start at version 0.1.0
+		- You are starting with a set of features, not bug fixes
+		- Increment the minor version for each subsequent release
+	2. Start versioning at 1.0.0 if:
+		- Your software is already used in production
+		- Other users depend on your software and care when the API changes
+		- You are worrying about backwards compatibility
+	3. The initial development phase is represented by MAJOR version 0
+		- Make as many breaking changes as you want before v1.0.0
+	4. Once you have released v1.0.0, API adjustments or other breaking changes are not acceptable without a new MAJOR version change
+	5. If you are adding new features without breaking the existing API or functionality, increment the MINOR number.
+	6. If you are fixing bugs, increment the PATCH number.
+	7. Avoid making frequent breaking changes unless you absolutely need to!
+		- Batch major changes together on a branch until you have enough to justify a new major release
