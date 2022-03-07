@@ -1,0 +1,16 @@
+CHANGES 
+
+
+March 7 2022:
+	- Created a layout for android Portrait view (1080x2400)
+	- Added Panels:
+		• Top: Empty for now
+		• Letters: 20 button letters
+		• Skills: passive, skill1, skill2 and ultimate button
+		• Bottom: Attack button 
+
+
+Next update task:
+	- Create an initial functions for buttons
+	- Add the layout when player is preparing the attack or pressing the letter buttons
+	- Make the layout responsive for any portrait views
