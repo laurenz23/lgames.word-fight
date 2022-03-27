@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,11 +10,13 @@ namespace LGAMES.WordFight
 
         #region :: Inspector Variables
         [Header("UI Reference")]
+        [SerializeField] private Image defaultBackground;
+        [SerializeField] private Image selectedBackground;
         [SerializeField] private Button button;
         [SerializeField] private TextMeshProUGUI textMP;
         [Header("Letter Value")]
-        public int letterId;
-        public char letter;
+        public LetterProperties letterProperties;
+        public bool selected;
         #endregion
 
         #region :: Variables
@@ -21,47 +24,59 @@ namespace LGAMES.WordFight
         #endregion
 
         #region :: Class Reference
-        private LetterAttackUIManager letterAttackUIHandler;
+        private LetterAttackUIManager letterAttackUIManager;
         #endregion
 
         #region :: Lifecycle
         private void Start()
         {
-            if (letterAttackUIHandler == null)
-                letterAttackUIHandler = LetterAttackUIManager.GetInstance();
+            if (letterAttackUIManager == null)
+                letterAttackUIManager = LetterAttackUIManager.GetInstance();
 
-            textMP.SetText(letter.ToString().ToUpper());
+            textMP.SetText(letterProperties.letter.ToString().ToUpper());
 
             button.onClick.AddListener(delegate
             {
                 OnLetterAction();
             });
+
+            SetBackground();
         }
         #endregion
 
         #region :: Properties
         public char GetLetter()
         {
-            return letter;
+            return letterProperties.letter;
         }
         #endregion
 
         #region :: Events
-        private void OnLetterAction()
+        public void OnLetterAction()
         {
-            if (letterAttackUIHandler.InAttackQueue(this))
+            // remove from attack in queue
+            if (selected) 
             {
-                letterAttackUIHandler.RemoveFromAttackQueue(this);
+                selected = false;
+                letterAttackUIManager.RemoveFromAttackQueue(letterProperties.letterId);
             }
-            else 
+            // proceed to attack in queue
+            else
             {
-                letterAttackUIHandler.CreateLetterAttackUI(this);
+                selected = true;
+                letterAttackUIManager.CreateLetterAttackUI(letterProperties, this);
             }
+
+            SetBackground();
         }
         #endregion
 
         #region :: Methods
-
+        private void SetBackground()
+        {
+            defaultBackground.gameObject.SetActive(!selected);
+            selectedBackground.gameObject.SetActive(selected);
+        }
         #endregion
 
     }

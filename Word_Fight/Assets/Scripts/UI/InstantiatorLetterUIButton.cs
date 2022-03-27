@@ -7,18 +7,22 @@ namespace LGAMES.WordFight
     {
 
         #region :: Inspector Variables
-        [SerializeField] private GameObject letterButtonPrefab;
         [SerializeField] private Transform letterUIParent;
+        [SerializeField] private List<Transform> letterUIParentList;
         [SerializeField] private int numberToInstantiate = 20;
+        [SerializeField] private int maxLetterPerHorParent = 4;
         #endregion
 
         #region :: Variables
+        private GameObject letterButtonPrefab;
         private List<LetterUIButton> letterList = new List<LetterUIButton>();
         private int letterIDGenerator;
         #endregion
 
         #region :: Class Reference
         private LetterGeneratorManager letterGeneratorManager;
+        [Header("Script Reference")]
+        [SerializeField] private UIPrefabManager uiPrefabManager;
         #endregion
 
         #region :: Lifecycle
@@ -29,9 +33,16 @@ namespace LGAMES.WordFight
 
         private void Start()
         {
+            letterButtonPrefab = uiPrefabManager.letterUIButton;
+
             while (letterList.Count < numberToInstantiate)
             {
-                CreateLetterButtons();
+                Transform letterParent = GetAvailableLetterUIParent();
+
+                if (letterParent != null) 
+                {
+                    CreateLetterButtons(letterParent);
+                }
             }
         }
         #endregion
@@ -41,6 +52,17 @@ namespace LGAMES.WordFight
         {
             return letterList;
         }
+
+        public Transform GetAvailableLetterUIParent() 
+        {
+            foreach (Transform t in letterUIParentList)
+            {
+                if (t.childCount < maxLetterPerHorParent)
+                    return t;
+            }
+
+            return null;
+        }
         #endregion
 
         #region :: Events
@@ -48,12 +70,12 @@ namespace LGAMES.WordFight
         #endregion
 
         #region :: Methods
-        private void CreateLetterButtons()
+        private void CreateLetterButtons(Transform letterParent)
         {
-            GameObject newLetter = Instantiate(letterButtonPrefab, letterUIParent);
+            GameObject newLetter = Instantiate(letterButtonPrefab, letterParent);
             LetterUIButton letterUIButton = newLetter.GetComponent<LetterUIButton>();
-            letterUIButton.letterId = letterIDGenerator++;
-            letterUIButton.letter = letterGeneratorManager.GetRandomLetter();
+            letterUIButton.letterProperties.letterId = letterIDGenerator++;
+            letterUIButton.letterProperties.letter = letterGeneratorManager.GetRandomLetter();
             letterList.Add(letterUIButton);
         }
         #endregion

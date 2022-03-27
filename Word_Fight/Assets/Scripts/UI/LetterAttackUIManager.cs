@@ -11,16 +11,13 @@ namespace LGAMES.WordFight
         #endregion
 
         #region :: Variables
-        private List<LetterUIButton> letterPreparedAttack = new List<LetterUIButton>();
-        private List<LetterUIButton> letterHideFromPanel = new List<LetterUIButton>();
+        private readonly List<LetterUIInAttackButton> letterUIInAttackButtonList = new List<LetterUIInAttackButton>();
+        private GameObject letterButtonPrefab;
         #endregion
 
         #region :: Class Reference
+        [SerializeField] private UIPrefabManager uiPrefabManager;
         private static LetterAttackUIManager instance;
-        #endregion
-
-        #region :: Listeners
-
         #endregion
 
         #region :: Lifecycle
@@ -29,6 +26,11 @@ namespace LGAMES.WordFight
             if (instance == null)
                 instance = this;
         }
+
+        private void Start()
+        {
+            letterButtonPrefab = uiPrefabManager.letterUIInAttackButton;
+        }
         #endregion
 
         #region :: Properties
@@ -36,50 +38,38 @@ namespace LGAMES.WordFight
         {
             return instance;
         }
-
-        public bool InAttackQueue(LetterUIButton letterUIButton)
-        {
-            foreach (LetterUIButton luib in letterPreparedAttack)
-            {
-                if (luib.letterId == letterUIButton.letterId)
-                    return true;
-            }
-
-            return false;
-        }
-        #endregion
-
-        #region :: Events
-
         #endregion
 
         #region :: Methods
-        public void CreateLetterAttackUI(LetterUIButton letterUIButton)
+        public void CreateLetterAttackUI(LetterProperties letterProperties, LetterUIButton letterUIButton)
         {
-            Instantiate(letterUIButton.gameObject, attackParent);
-            letterPreparedAttack.Add(letterUIButton);
-            AddToHideFromPanel(letterUIButton);
-        }
-
-        public void RemoveFromAttackQueue(LetterUIButton letterUIButton)
-        {
-            foreach (LetterUIButton luib in letterHideFromPanel)
+            foreach (LetterUIInAttackButton letterUIAttack in letterUIInAttackButtonList)
             {
-                if (luib.letterId == letterUIButton.letterId)
+                if (letterUIAttack.letterProperties.letterId == letterProperties.letterId)
                 {
-                    luib.gameObject.SetActive(true);
-                    letterHideFromPanel.Remove(luib);
-                    letterPreparedAttack.Remove(luib);
-                    Destroy(letterUIButton.gameObject);
+                    letterUIAttack.gameObject.SetActive(true);
                     return;
                 }
             }
+
+            GameObject newObj = Instantiate(letterButtonPrefab, attackParent);
+            LetterUIInAttackButton letterUIInAttack = newObj.GetComponent<LetterUIInAttackButton>();
+            letterUIInAttack.letterProperties = letterProperties;
+            letterUIInAttack.letterUIButton = letterUIButton;
+            letterUIInAttack.Setup();
+            letterUIInAttackButtonList.Add(letterUIInAttack);
         }
 
-        private void AddToHideFromPanel(LetterUIButton letterUIButton)
+        public void RemoveFromAttackQueue(int letterId)
         {
-            letterHideFromPanel.Add(letterUIButton);
-            letterUIButton.gameObject.SetActive(false);
+            foreach (LetterUIInAttackButton letterUIAttack in letterUIInAttackButtonList)
+            {
+                if (letterUIAttack.letterProperties.letterId == letterId)
+                {
+                    letterUIAttack.gameObject.SetActive(false);
+                    return;
+                }
+            }
         }
         #endregion
 
