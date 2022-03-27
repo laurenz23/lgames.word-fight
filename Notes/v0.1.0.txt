@@ -10,7 +10,37 @@ March 7 2022:
 		• Bottom: Attack button 
 
 
-Next update task:
-	- Create an initial functions for buttons
+March 13 2022: 
+	- Created an initial functions for buttons
+	- Created a class for instantiating random letter buttons 
+	- Created a class that will manage the attack letter ui
 	- Add the layout when player is preparing the attack or pressing the letter buttons
-	- Make the layout responsive for any portrait views
+	- Add function to display the word after player pressing the letters
+
+March 21 2022:
+	- Make the letter attack responsive in any portrait view:
+		Action: 
+			1. Added a horizontal layout in Letter Attack parent, then disabled everything except the control child size width and height.
+			2. Added a Layout Element to Letter Attack itself and set the min width and height to 25, also set the preffered width and height to 150.
+			3. The 20 letters are fit in one row 
+
+March 27 2022:
+	- Improve letter panel:
+		- Remove auto positioning if one letter is in attack queue
+		- Make the letter fall like have a gravity if there's nothing below 
+	- Improve the function when the player click the letters
+		Action:
+			1. If there is no created letter object at letter attack panel. It will create a new object for that.
+			2. Instead of destroying the created object letter, it will be deactivated if going to remove in attack queue.
+			3. If the object is selected again it will be activated.
+
+Task:
+	- Create a initial function for the attack button
+		Action: 
+			1. The attack button is disabled if there is no at least 4 letters in attack queue.
+			2. The attack button will enabled once there are 4 letters in attack queue.
+			3. Remove the letters at the selection and attack letter panels, that had been selected for the attack
+	- Letter Generator will automatically generate new letter base on the missing number of letter tiles 
+	- Refactor and cleaning the project
+	- Add letter AI Generator that will fill the available slots letters that can create a word
+		- Recommended: Use Python for AI
