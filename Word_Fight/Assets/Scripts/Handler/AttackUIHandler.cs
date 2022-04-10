@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using LGAMES.Config;
 
 namespace LGAMES.WordFight
 {
     public class AttackUIHandler : MonoBehaviour
     {
 
-        #region :: Inspector Variables
+        #region :: Variables
         [SerializeField] private Button attackButton;
         [SerializeField] private Transform attackParent;
-        #endregion
+        [SerializeField] private List<UILetterTileAttackQue> uiLetterTileAtckQueList = new List<UILetterTileAttackQue>();
+        
+        private GameObject uiLetterTileAtckQuePrefab;
 
-        #region :: Variables
-        [SerializeField]
-        private List<LetterUIInAttackButton> letterUIInAtckBtnList = new List<LetterUIInAttackButton>();
-        private GameObject letterUIInAtckBtnPrefab;
+        private int minLetterToAttack;
         #endregion
 
         #region :: Class Reference
@@ -32,16 +32,18 @@ namespace LGAMES.WordFight
         #region :: Lifecycle
         private void Start()
         {
-            letterUIInAtckBtnPrefab = inGameUIManager.GetLetterUIInAtckBtnPrefab();
+            minLetterToAttack = GameConfig.Min_Letter_Attack;
+
+            uiLetterTileAtckQuePrefab = inGameUIManager.GetUILetterTileAtckQuePrefab();
 
             InitializeAttack();
         }
         #endregion
 
         #region :: Properties
-        public List<LetterUIInAttackButton> GetLetterUIInAtckBtnList()
+        public List<UILetterTileAttackQue> GetLetterUIInAtckBtnList()
         {
-            return letterUIInAtckBtnList;
+            return uiLetterTileAtckQueList;
         }
         #endregion
 
@@ -57,17 +59,17 @@ namespace LGAMES.WordFight
         #region :: Methods
         public bool CanAttack()
         {
-            if (letterUIInAtckBtnList.Count < inGameUIManager.GetAttackManager().minLetterForAttack)
+            if (uiLetterTileAtckQueList.Count < minLetterToAttack)
                 return false;
 
             int countLetterCanAttack = 0;
 
-            foreach (LetterUIInAttackButton liab in letterUIInAtckBtnList)
+            foreach (UILetterTileAttackQue liab in uiLetterTileAtckQueList)
             {
                 if (liab.attack)
                     countLetterCanAttack++;
 
-                if (countLetterCanAttack >= inGameUIManager.GetAttackManager().minLetterForAttack)
+                if (countLetterCanAttack >= minLetterToAttack)
                     return true;
             }
 
@@ -76,38 +78,38 @@ namespace LGAMES.WordFight
 
         public void RemoveFromAttackQueue(int letterId)
         {
-            foreach (LetterUIInAttackButton letterUIAttack in letterUIInAtckBtnList)
+            foreach (UILetterTileAttackQue ltaq in uiLetterTileAtckQueList)
             {
-                if (letterUIAttack.letterProperties.letterId == letterId)
+                if (ltaq.letterProperties.letterId == letterId)
                 {
-                    letterUIAttack.RemoveFromAttack();
+                    ltaq.RemoveFromAttack();
                     InitializeAttack();
                     return;
                 }
             }
         }
 
-        public void AddToAttackQueue(LetterProperties letterProperties, LetterUIButton letterUIButton)
+        public void AddToAttackQueue(LetterProperties letterProperties, UILetterTile uiLetterTile)
         {
-            foreach (LetterUIInAttackButton letterUIAttack in letterUIInAtckBtnList)
+            foreach (UILetterTileAttackQue ltaq in uiLetterTileAtckQueList)
             {
-                if (letterUIAttack.letterProperties.letterId == letterProperties.letterId)
+                if (ltaq.letterProperties.letterId == letterProperties.letterId)
                 {
-                    letterUIAttack.AddToAttack();
+                    ltaq.AddToAttack();
                     InitializeAttack();
                     return;
                 }
             }
 
             // create letter ui if not already from the list
-            GameObject newObj = Instantiate(letterUIInAtckBtnPrefab, attackParent);
-            LetterUIInAttackButton letterUIInAttack = newObj.GetComponent<LetterUIInAttackButton>();
-            letterUIInAttack.letterProperties = letterProperties;
-            letterUIInAttack.letterUIButton = letterUIButton;
-            letterUIInAttack.attackUIHandler = this;
-            letterUIInAttack.Setup();
-            letterUIInAttack.AddToAttack();
-            letterUIInAtckBtnList.Add(letterUIInAttack);
+            GameObject newObj = Instantiate(uiLetterTileAtckQuePrefab, attackParent);
+            UILetterTileAttackQue letterTileAtckQue = newObj.GetComponent<UILetterTileAttackQue>();
+            letterTileAtckQue.letterProperties = letterProperties;
+            letterTileAtckQue.uiLetterTile = uiLetterTile;
+            letterTileAtckQue.attackUIHandler = this;
+            letterTileAtckQue.Setup();
+            letterTileAtckQue.AddToAttack();
+            uiLetterTileAtckQueList.Add(letterTileAtckQue);
             InitializeAttack();
         }
 
@@ -124,7 +126,7 @@ namespace LGAMES.WordFight
         IEnumerator WaitSecToGenerateNewLetter()
         {
             yield return new WaitForSeconds(1f);
-            inGameUIManager.GetInstantiatorLetterUIButton().SetupLetterUIButton();
+            inGameUIManager.GetLetterTileInstantiator().SetupLetterUIButton();
             StopCoroutine(WaitSecToGenerateNewLetter());
         }
         #endregion

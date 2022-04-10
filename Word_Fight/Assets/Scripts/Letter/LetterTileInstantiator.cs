@@ -1,21 +1,20 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace LGAMES.WordFight
 {
-    public class InstantiatorLetterUIButton : MonoBehaviour
+    public class LetterTileInstantiator : MonoBehaviour
     {
 
-        #region :: Inspector Variables
+        #region :: Variables
         [SerializeField] private Transform letterUIParent;
         [SerializeField] private List<Transform> letterUIParentList;
         [SerializeField] private int numberToInstantiate = 20;
         [SerializeField] private int maxLetterPerHorParent = 4;
-        #endregion
 
-        #region :: Variables
-        private GameObject letterBtnPrefab;
-        public List<LetterUIButton> letterList = new List<LetterUIButton>();
+        private GameObject uiLetterTileObj;
+        public List<UILetterTile> uiLetterTileList = new List<UILetterTile>();
         private int letterIDGenerator;
         #endregion
 
@@ -23,10 +22,6 @@ namespace LGAMES.WordFight
         private LetterGeneratorManager letterGeneratorManager;
         [Header("Script Reference")]
         [SerializeField] private InGameUIManager inGameUIManager;
-        #endregion
-
-        #region :: Listeners
-
         #endregion
 
         #region :: Lifecycle
@@ -37,16 +32,16 @@ namespace LGAMES.WordFight
 
         private void Start()
         {
-            letterBtnPrefab = inGameUIManager.GetLetterUIBtnPrefab();
+            uiLetterTileObj = inGameUIManager.GetUILetterTilePrefab();
 
             SetupLetterUIButton();
         }
         #endregion
 
         #region :: Properties
-        public List<LetterUIButton> GetLetterList()
+        public List<UILetterTile> GetLetterList()
         {
-            return letterList;
+            return uiLetterTileList;
         }
 
         public Transform GetAvailableLetterUIParent() 
@@ -68,7 +63,7 @@ namespace LGAMES.WordFight
         #region :: Methods
         public void SetupLetterUIButton()
         {
-            while (letterList.Count < numberToInstantiate)
+            while (uiLetterTileList.Count < numberToInstantiate)
             {
                 Transform letterParent = GetAvailableLetterUIParent();
 
@@ -81,12 +76,12 @@ namespace LGAMES.WordFight
 
         private void CreateLetterButtons(Transform letterParent)
         {
-            GameObject newLetter = Instantiate(letterBtnPrefab, letterParent);
-            LetterUIButton letterUIButton = newLetter.GetComponent<LetterUIButton>();
-            letterUIButton.transform.SetAsFirstSibling();
-            letterUIButton.letterProperties.letterId = letterIDGenerator++;
-            letterUIButton.letterProperties.letter = letterGeneratorManager.GetRandomLetter();
-            letterList.Add(letterUIButton);
+            GameObject newLetter = Instantiate(uiLetterTileObj, letterParent);
+            UILetterTile uiletterTile = newLetter.GetComponent<UILetterTile>();
+            uiletterTile.transform.SetAsFirstSibling();
+            uiletterTile.letterProperties.letterId = letterIDGenerator++;
+            uiletterTile.letterProperties.letter = letterGeneratorManager.GetRandomLetter();
+            uiLetterTileList.Add(uiletterTile);
         }
         #endregion
 

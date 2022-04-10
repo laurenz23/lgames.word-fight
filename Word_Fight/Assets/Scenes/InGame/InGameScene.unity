@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 48436239}
   - component: {fileID: 48436241}
   m_Layer: 5
-  m_Name: LetterAttack_panel
+  m_Name: LetterAttack_section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 719078734}
   - component: {fileID: 719078736}
   m_Layer: 5
-  m_Name: Letter_panel
+  m_Name: Letter_section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 779214193}
   - component: {fileID: 779214192}
   m_Layer: 5
-  m_Name: Bottom_panel
+  m_Name: Bottom_section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1003,7 +1003,7 @@ GameObject:
   - component: {fileID: 807790105}
   - component: {fileID: 807790106}
   m_Layer: 0
-  m_Name: InstantiatorLetterUIBtn
+  m_Name: LetterInstantiator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1049,7 +1049,7 @@ MonoBehaviour:
   - {fileID: 1984191574}
   numberToInstantiate: 20
   maxLetterPerHorParent: 4
-  letterList: []
+  uiLetterTileList: []
   inGameUIManager: {fileID: 829777597}
 --- !u!1 &829777592
 GameObject:
@@ -1172,10 +1172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3993cbf4d303f9043a0c606f943a0bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterUIBtnPrefab: {fileID: 7977734915795513012, guid: 0d0a69083d153d14e877aac8887cc933, type: 3}
-  letterUIInAtckBtnPrefab: {fileID: 7977734915795513012, guid: c32c1e351c7f9874e906d0b9b1defaa3, type: 3}
+  uiLetterTilePrefab: {fileID: 7977734915795513012, guid: 0d0a69083d153d14e877aac8887cc933, type: 3}
+  uiLetterTileAtckQuePrefab: {fileID: 7977734915795513012, guid: c32c1e351c7f9874e906d0b9b1defaa3, type: 3}
   skillBtnPrefab: {fileID: 8377564831153736552, guid: 33499ceb82997f44b922482b3dd9a795, type: 3}
-  instantiatorLetterUIButton: {fileID: 807790106}
+  letterTileInstantiator: {fileID: 807790106}
   attackManager: {fileID: 2044211499}
   attackUIHandler: {fileID: 1956131102}
 --- !u!1 &860839703
@@ -1407,7 +1407,7 @@ GameObject:
   - component: {fileID: 953974491}
   - component: {fileID: 953974493}
   m_Layer: 5
-  m_Name: Skills_panel
+  m_Name: Skill_section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2061,7 +2061,7 @@ GameObject:
   - component: {fileID: 1910131741}
   - component: {fileID: 1910131740}
   m_Layer: 5
-  m_Name: Top_panel
+  m_Name: Top_section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2179,7 +2179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackButton: {fileID: 860839705}
   attackParent: {fileID: 48436238}
-  letterUIInAtckBtnList: []
+  uiLetterTileAtckQueList: []
   inGameUIManager: {fileID: 829777597}
 --- !u!1 &1974813097
 GameObject:

@@ -2,24 +2,21 @@ using UnityEngine;
 
 namespace LGAMES.WordFight
 {
+
     public class InGameUIManager : MonoBehaviour
     {
 
-        #region :: Inspector Variables
-        [Header("UI Prefab")]
-        [SerializeField] private GameObject letterUIBtnPrefab;
-        [SerializeField] private GameObject letterUIInAtckBtnPrefab;
-        [SerializeField] private GameObject skillBtnPrefab;
-        #endregion
-
         #region :: Variables
-
+        [Header("UI Prefab")]
+        [SerializeField] private GameObject uiLetterTilePrefab;
+        [SerializeField] private GameObject uiLetterTileAtckQuePrefab;
+        [SerializeField] private GameObject skillBtnPrefab;
         #endregion
 
         #region :: Class Reference
         private static InGameUIManager instance;
         [Header("Class Reference")]
-        [SerializeField] private InstantiatorLetterUIButton instantiatorLetterUIButton;
+        [SerializeField] private LetterTileInstantiator letterTileInstantiator;
         [SerializeField] private AttackManager attackManager;
         [SerializeField] private AttackUIHandler attackUIHandler;
         #endregion
@@ -38,14 +35,14 @@ namespace LGAMES.WordFight
             return instance;
         }
 
-        public GameObject GetLetterUIBtnPrefab()
+        public GameObject GetUILetterTilePrefab()
         {
-            return letterUIBtnPrefab;
+            return uiLetterTilePrefab;
         }
 
-        public GameObject GetLetterUIInAtckBtnPrefab()
+        public GameObject GetUILetterTileAtckQuePrefab()
         {
-            return letterUIInAtckBtnPrefab;
+            return uiLetterTileAtckQuePrefab;
         }
 
         public GameObject GetSkillBtnPrefab()
@@ -53,9 +50,9 @@ namespace LGAMES.WordFight
             return skillBtnPrefab;
         }
 
-        public InstantiatorLetterUIButton GetInstantiatorLetterUIButton()
+        public LetterTileInstantiator GetLetterTileInstantiator()
         {
-            return instantiatorLetterUIButton;
+            return letterTileInstantiator;
         }
 
         public AttackManager GetAttackManager()

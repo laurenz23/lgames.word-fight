@@ -5,12 +5,8 @@ namespace LGAMES.WordFight
     public class AttackManager : MonoBehaviour
     {
 
-        #region :: Inspector Variables
-
-        #endregion
-
         #region :: Variables
-        public readonly int minLetterForAttack = 4;
+
         #endregion
 
         #region :: Class Reference

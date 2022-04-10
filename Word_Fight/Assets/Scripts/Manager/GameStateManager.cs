@@ -3,10 +3,6 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
 
-    #region :: Inspector Variables
-    
-    #endregion
-
     #region :: Variables
     
     #endregion

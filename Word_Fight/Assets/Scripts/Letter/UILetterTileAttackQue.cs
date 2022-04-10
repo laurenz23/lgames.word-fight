@@ -4,10 +4,10 @@ using TMPro;
 
 namespace LGAMES.WordFight
 {
-    public class LetterUIInAttackButton : MonoBehaviour
+    public class UILetterTileAttackQue : MonoBehaviour
     {
 
-        #region :: Inspector Variables
+        #region :: Variables
         [Header("UI Reference")]
         [SerializeField] private Button button;
         [SerializeField] private TextMeshProUGUI textMP;
@@ -17,7 +17,7 @@ namespace LGAMES.WordFight
 
         #region :: Class Reference
         public LetterProperties letterProperties;
-        public LetterUIButton letterUIButton;
+        public UILetterTile uiLetterTile;
         public AttackUIHandler attackUIHandler;
         #endregion
 
@@ -31,7 +31,7 @@ namespace LGAMES.WordFight
         {
             button.onClick.AddListener(delegate
             {
-                letterUIButton.OnLetterAction();
+                uiLetterTile.OnLetterAction();
             });
         }
         #endregion
@@ -60,7 +60,6 @@ namespace LGAMES.WordFight
         {
             attackUIHandler.GetLetterUIInAtckBtnList().Remove(this);
             Destroy(gameObject);
-            Debug.Log("Letter Attack: " + letterProperties.letter);
         }
         #endregion
 

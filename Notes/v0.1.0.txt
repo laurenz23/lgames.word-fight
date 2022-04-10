@@ -42,12 +42,13 @@ April 3 2022:
 			3. Remove the letters at the selection and attack letter panels, that had been selected for the attack
 	- Letter Generator will automatically generate new letter base on the missing number of letter tiles 
 
-April 10 2022:
-	- Remove auto-resize of tiles
+April 10 - 11 2022:
+	- Added Game Config class
+	- Added Player Action State Manager
 	- Refactor and cleaning the project
+	- Remove auto-resize of tiles
 
 Task:
-	- Refactor and cleaning the project
 	- Add dictionary to check if the composed letters is existed in english word
 	- Add letter AI Generator that will fill the available slots letters that can create a word
 		- Recommended: Use Python for AI

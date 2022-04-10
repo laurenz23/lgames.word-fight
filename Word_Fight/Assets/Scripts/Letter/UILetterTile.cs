@@ -5,10 +5,10 @@ using TMPro;
 
 namespace LGAMES.WordFight
 {
-    public class LetterUIButton : MonoBehaviour
+    public class UILetterTile : MonoBehaviour
     {
 
-        #region :: Inspector Variables
+        #region :: Variables
         [Header("UI Reference")]
         [SerializeField] private Image defaultBackground;
         [SerializeField] private Image selectedBackground;
@@ -17,10 +17,6 @@ namespace LGAMES.WordFight
         [Header("Letter Value")]
         public LetterProperties letterProperties;
         public bool selected;
-        #endregion
-
-        #region :: Variables
-
         #endregion
 
         #region :: Class Reference
@@ -35,6 +31,11 @@ namespace LGAMES.WordFight
                 inGameUIManager = InGameUIManager.GetInstance();
 
             attackUIHandler = inGameUIManager.GetAttackUIHandler();
+        }
+
+        private void OnEnable()
+        {
+
         }
 
         private void OnDisable()
@@ -85,7 +86,7 @@ namespace LGAMES.WordFight
 
         private void OnAttack()
         {
-            inGameUIManager.GetInstantiatorLetterUIButton().GetLetterList().Remove(this);
+            inGameUIManager.GetLetterTileInstantiator().GetLetterList().Remove(this);
             Destroy(gameObject);
         }
         #endregion
