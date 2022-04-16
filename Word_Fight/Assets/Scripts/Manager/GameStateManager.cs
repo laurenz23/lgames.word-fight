@@ -1,12 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class AttackUIHandler : MonoBehaviour
+public class GameStateManager : MonoBehaviour
 {
-
-    #region :: Inspector Variables
-    [SerializeField] private Button attackButton;
-    #endregion
 
     #region :: Variables
     
@@ -29,10 +24,7 @@ public class AttackUIHandler : MonoBehaviour
     #endregion
 
     #region :: Events
-    public void OnAttackAction()
-    {
-        Debug.Log("Attack Button Pressed", attackButton);
-    }
+    
     #endregion
 
     #region :: Methods

@@ -5,10 +5,10 @@ using TMPro;
 
 namespace LGAMES.WordFight
 {
-    public class LetterUIButton : MonoBehaviour
+    public class UILetterTile : MonoBehaviour
     {
 
-        #region :: Inspector Variables
+        #region :: Variables
         [Header("UI Reference")]
         [SerializeField] private Image defaultBackground;
         [SerializeField] private Image selectedBackground;
@@ -19,20 +19,32 @@ namespace LGAMES.WordFight
         public bool selected;
         #endregion
 
-        #region :: Variables
-
-        #endregion
-
         #region :: Class Reference
-        private LetterAttackUIManager letterAttackUIManager;
+        private InGameUIManager inGameUIManager;
+        private AttackUIHandler attackUIHandler;
         #endregion
 
         #region :: Lifecycle
+        private void Awake()
+        {
+            if (inGameUIManager == null)
+                inGameUIManager = InGameUIManager.GetInstance();
+
+            attackUIHandler = inGameUIManager.GetAttackUIHandler();
+        }
+
+        private void OnEnable()
+        {
+
+        }
+
+        private void OnDisable()
+        {
+            attackUIHandler.EventOnAttack -= OnAttack;
+        }
+
         private void Start()
         {
-            if (letterAttackUIManager == null)
-                letterAttackUIManager = LetterAttackUIManager.GetInstance();
-
             textMP.SetText(letterProperties.letter.ToString().ToUpper());
 
             button.onClick.AddListener(delegate
@@ -58,16 +70,24 @@ namespace LGAMES.WordFight
             if (selected) 
             {
                 selected = false;
-                letterAttackUIManager.RemoveFromAttackQueue(letterProperties.letterId);
+                attackUIHandler.EventOnAttack -= OnAttack;
+                attackUIHandler.RemoveFromAttackQueue(letterProperties.letterId);
             }
             // proceed to attack in queue
             else
             {
                 selected = true;
-                letterAttackUIManager.CreateLetterAttackUI(letterProperties, this);
+                attackUIHandler.EventOnAttack += OnAttack;
+                attackUIHandler.AddToAttackQueue(letterProperties, this);
             }
 
             SetBackground();
+        }
+
+        private void OnAttack()
+        {
+            inGameUIManager.GetLetterTileInstantiator().GetLetterList().Remove(this);
+            Destroy(gameObject);
         }
         #endregion
 
