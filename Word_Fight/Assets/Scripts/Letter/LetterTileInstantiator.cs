@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ namespace LGAMES.WordFight
         private GameObject uiLetterTileObj;
         public List<UILetterTile> uiLetterTileList = new List<UILetterTile>();
         private int letterIDGenerator;
+        private Vector2 letterSize = Vector2.zero;
         #endregion
 
         #region :: Class Reference
@@ -35,6 +37,7 @@ namespace LGAMES.WordFight
             uiLetterTileObj = inGameUIManager.GetUILetterTilePrefab();
 
             SetupLetterUIButton();
+            StartCoroutine(SetTileSize());
         }
         #endregion
 
@@ -77,11 +80,36 @@ namespace LGAMES.WordFight
         private void CreateLetterButtons(Transform letterParent)
         {
             GameObject newLetter = Instantiate(uiLetterTileObj, letterParent);
-            UILetterTile uiletterTile = newLetter.GetComponent<UILetterTile>();
-            uiletterTile.transform.SetAsFirstSibling();
-            uiletterTile.letterProperties.letterId = letterIDGenerator++;
-            uiletterTile.letterProperties.letter = letterGeneratorManager.GetRandomLetter();
-            uiLetterTileList.Add(uiletterTile);
+            UILetterTile uiLetterTile = newLetter.GetComponent<UILetterTile>();
+            uiLetterTile.transform.SetAsFirstSibling();
+            uiLetterTile.letterProperties.letterId = letterIDGenerator++;
+            uiLetterTile.letterProperties.letter = letterGeneratorManager.GetRandomLetter();
+            uiLetterTileList.Add(uiLetterTile);
+
+            if (letterSize != Vector2.zero) 
+            {
+                uiLetterTile.GetComponent<RectTransform>().sizeDelta = letterSize;
+            }
+        }
+        #endregion
+
+        #region Enumerator  
+        public IEnumerator SetTileSize() {
+            yield return new WaitForEndOfFrame(); 
+            
+            letterSize = uiLetterTileList[0].GetComponent<RectTransform>().sizeDelta;
+
+            foreach (Transform t in letterUIParentList)
+            {
+                VerticalLayoutGroup verticalLayout = t.GetComponent<VerticalLayoutGroup>();
+                verticalLayout.childControlWidth = false;
+                verticalLayout.childControlHeight = false;
+            }
+
+            foreach (UILetterTile ult in uiLetterTileList) 
+            {
+                ult.GetComponent<RectTransform>().sizeDelta = letterSize;
+            }
         }
         #endregion
 

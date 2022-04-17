@@ -2,12 +2,6 @@ using UnityEngine;
 
 namespace LGAMES.WordFight
 {
-    public enum PlayerActionState
-    { 
-        PREPARING,
-        READY,
-        ATTACK
-    }
 
     public class PlayerAttackStateManager : MonoBehaviour
     {
