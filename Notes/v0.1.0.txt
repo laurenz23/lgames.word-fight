@@ -1,21 +1,21 @@
 CHANGES 
 
 
-March 7 2022:
-	- Created a layout for android Portrait view (1080x2400)
-	- Added Panels:
-		• Top: Empty for now
-		• Letters: 20 button letters
-		• Skills: passive, skill1, skill2 and ultimate button
+March 7 2022: 
+	- Created a layout for android Portrait view (1080x2400) 
+	- Added Panels: 
+		• Top: Empty for now 
+		• Letters: 20 button letters 
+		• Skills: passive, skill1, skill2 and ultimate button 
 		• Bottom: Attack button 
 
 
 March 13 2022: 
-	- Created an initial functions for buttons
+	- Created an initial functions for buttons 
 	- Created a class for instantiating random letter buttons 
-	- Created a class that will manage the attack letter ui
-	- Add the layout when player is preparing the attack or pressing the letter buttons
-	- Add function to display the word after player pressing the letters
+	- Created a class that will manage the attack letter ui 
+	- Add the layout when player is preparing the attack or pressing the letter buttons 
+	- Add function to display the word after player pressing the letters 
 
 March 21 2022:
 	- Make the letter attack responsive in any portrait view:
@@ -28,7 +28,7 @@ March 27 2022:
 	- Improve letter panel:
 		- Remove auto positioning if one letter is in attack queue
 		- Make the letter fall like have a gravity if there's nothing below 
-	- Improve the function when the player click the letter tiles
+	- Improve the function when the player click the letter tiles 
 		Action:
 			1. If there is no created letter object at letter attack panel. It will create a new object for that.
 			2. Instead of destroying the created object letter, it will be deactivated if going to remove in attack queue.
@@ -47,13 +47,26 @@ April 10 2022:
 	- Added Player Action State Manager
 
 April 17 2022:
-	- Refactor and cleaning the project
 	- Remove auto-resize of tiles
+	- Refactor and cleaning the project
 
 April 18 2022:
-	- Brainstorming and searching checking the letter if existed in english word
-	- Add dictionary to check if the composed letters is existed in english word
+	- Brainstorming and searching checking the letter if existed in english word 
+	- Add dictionary to check if the composed letters is existed in english word 
 
 Task:
-	- Add letter AI Generator that will fill the available slots letters that can create a word
-		- Recommended: Use Python for AI
+	- Add letter AI Generator that will fill the available slots letters that can create a word 
+		- Recommended: Use Python for AI 
+
+
+lorenzomarkromanmlorenzo@gmail.com 
+gielinmontopar1@gmail.com 
+
+Hi Gio, sorry for disturbing you so early, I would like to ask regarding sa force change password 
+I already applied your suggestion to avoid displaying of note editor 
+but if your going to terminate the app 
+nakikita ang pag displayed ni intro page before si change password mag display 
+as you can see in the video 
+is that ok? 
+Elvin already told me na ok lang siya 
+kasi sa Android kapag nasa Onboarding activity ka need talaga dumaan kay intro page 
