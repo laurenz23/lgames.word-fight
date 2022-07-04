@@ -125,7 +125,7 @@ namespace LGAMES.WordFight
         {
             yield return new WaitForSeconds(1f);
             inGameUIManager.GetLetterTileInstantiator().SetupLetterUIButton();
-            logger.Information("New letters are generated", this);
+            logger.Information("New letters are generated");
             StopCoroutine(WaitSecToGenerateNewLetter());
         }
         #endregion

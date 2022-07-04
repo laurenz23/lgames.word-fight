@@ -20,7 +20,7 @@ namespace LGAMES.WordFight
         #endregion
 
         #region :: Class Reference
-        private Logger _logger;
+        [SerializeField] private Logger _logger;
         private InGameUIManager inGameUIManager;
         private AttackUIHandler attackUIHandler;
         #endregion
@@ -46,8 +46,6 @@ namespace LGAMES.WordFight
 
         private void Start()
         {
-            _logger = Logger.GetInstance();
-
             textMP.SetText(letterProperties.letter.ToString().ToUpper());
 
             button.onClick.AddListener(delegate
