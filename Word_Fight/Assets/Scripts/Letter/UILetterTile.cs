@@ -20,6 +20,7 @@ namespace LGAMES.WordFight
         #endregion
 
         #region :: Class Reference
+        private Logger _logger;
         private InGameUIManager inGameUIManager;
         private AttackUIHandler attackUIHandler;
         #endregion
@@ -45,6 +46,8 @@ namespace LGAMES.WordFight
 
         private void Start()
         {
+            _logger = Logger.GetInstance();
+
             textMP.SetText(letterProperties.letter.ToString().ToUpper());
 
             button.onClick.AddListener(delegate
@@ -72,6 +75,7 @@ namespace LGAMES.WordFight
                 selected = false;
                 attackUIHandler.EventOnAttack -= OnAttack;
                 attackUIHandler.RemoveFromAttackQueue(letterProperties.letterId);
+                _logger.Warning("Remove from attack queue: " + letterProperties.letter, this);
             }
             // proceed to attack in queue
             else
@@ -79,6 +83,7 @@ namespace LGAMES.WordFight
                 selected = true;
                 attackUIHandler.EventOnAttack += OnAttack;
                 attackUIHandler.AddToAttackQueue(letterProperties, this);
+                _logger.Information("Added to attack queue: " + letterProperties.letter, this);
             }
 
             SetBackground();

@@ -21,6 +21,7 @@ namespace LGAMES.WordFight
 
         #region :: Class Reference
         [Header("Class Reference")]
+        [SerializeField] private Logger logger;
         [SerializeField] private InGameUIManager inGameUIManager;
         #endregion
 
@@ -115,10 +116,7 @@ namespace LGAMES.WordFight
 
         public void InitializeAttack()
         {
-            if (CanAttack())
-                attackButton.interactable = true;
-            else
-                attackButton.interactable = false;
+            attackButton.interactable = CanAttack();
         }
         #endregion
 
@@ -127,6 +125,7 @@ namespace LGAMES.WordFight
         {
             yield return new WaitForSeconds(1f);
             inGameUIManager.GetLetterTileInstantiator().SetupLetterUIButton();
+            logger.Information("New letters are generated", this);
             StopCoroutine(WaitSecToGenerateNewLetter());
         }
         #endregion
