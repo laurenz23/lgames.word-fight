@@ -273,8 +273,8 @@ GameObject:
   m_Component:
   - component: {fileID: 143889819}
   m_Layer: 0
-  m_Name: ========== ENVIRONMENTS
-  m_TagString: Untagged
+  m_Name: ENVIRONMENTS
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -411,8 +411,8 @@ GameObject:
   m_Component:
   - component: {fileID: 366446212}
   m_Layer: 0
-  m_Name: ========== CHARACTERS
-  m_TagString: Untagged
+  m_Name: CHARACTERS
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -610,8 +610,8 @@ GameObject:
   m_Component:
   - component: {fileID: 481183152}
   m_Layer: 0
-  m_Name: ========== UI
-  m_TagString: Untagged
+  m_Name: UI
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -725,8 +725,8 @@ GameObject:
   m_Component:
   - component: {fileID: 559411029}
   m_Layer: 0
-  m_Name: ========== POST PROCESSING
-  m_TagString: Untagged
+  m_Name: POST PROCESSING
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  m_Color: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1749,8 +1749,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1340950800}
   m_Layer: 0
-  m_Name: ========== MANAGERS
-  m_TagString: Untagged
+  m_Name: MANAGERS
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1780,8 +1780,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1348507347}
   m_Layer: 0
-  m_Name: ========== RUN ON CREATE
-  m_TagString: Untagged
+  m_Name: RUN ON CREATE
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1811,8 +1811,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1449873573}
   m_Layer: 0
-  m_Name: ========== LIGHTNINGS
-  m_TagString: Untagged
+  m_Name: LIGHTNINGS
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2054,8 +2054,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1804530051}
   m_Layer: 0
-  m_Name: ========== CAMERAS
-  m_TagString: Untagged
+  m_Name: CAMERAS
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2234,8 +2234,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1974813098}
   m_Layer: 0
-  m_Name: ========== HANDLERS
-  m_TagString: Untagged
+  m_Name: HANDLERS
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

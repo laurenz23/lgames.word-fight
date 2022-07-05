@@ -13,16 +13,13 @@ namespace LGAMES.WordFight
         [SerializeField] private Button attackButton;
         [SerializeField] private Transform attackParent;
         [SerializeField] private List<UILetterTileAttackQue> uiLetterTileAtckQueList = new List<UILetterTileAttackQue>();
-        
-        private GameObject uiLetterTileAtckQuePrefab;
-
-        private int minLetterToAttack;
-        #endregion
-
-        #region :: Class Reference
         [Header("Class Reference")]
         [SerializeField] private Logger logger;
         [SerializeField] private InGameUIManager inGameUIManager;
+
+        private GameObject uiLetterTileAtckQuePrefab;
+
+        private int minLetterToAttack;
         #endregion
 
         #region :: Listeners
