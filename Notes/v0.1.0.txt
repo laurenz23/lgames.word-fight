@@ -62,11 +62,174 @@ Task:
 lorenzomarkromanmlorenzo@gmail.com 
 gielinmontopar1@gmail.com 
 
-Hi Gio, sorry for disturbing you so early, I would like to ask regarding sa force change password 
-I already applied your suggestion to avoid displaying of note editor 
-but if your going to terminate the app 
-nakikita ang pag displayed ni intro page before si change password mag display 
-as you can see in the video 
-is that ok? 
-Elvin already told me na ok lang siya 
-kasi sa Android kapag nasa Onboarding activity ka need talaga dumaan kay intro page 
+
+
+
+5 Financial habits before you 30
+1. Stop buying things you don't need.
+2. Payoff your debt
+3. Invest your 10% income.
+4. Invest in your self.
+5. Be confident in what you provide.
+
+
+
+
+
+
+
+Old Number: 09991546285
+New Number: 09603065733
+Reason: Defective
+Case Number: 14001557
+
+Laurence M. Gonzales
+
+
+
+
+
+
+docs-support@maya.ph
+ITEC
+
+
+
+
+Monday: 1. Continue working on bug fixes of Trail Making Game.
+		2. Game Tutorial
+Tuesday:
+		3. Implementation of new scoring.
+		4. (If have time) Implementation of zoom for STDG.
+
+Fixes:
+	- Added start button at TMTG
+	- Fix hint button of TMTG
+	- Fix scores of TMTG
+
+- Game Replay
+- Game History
+
+
+PlayerID
+Type
+	Category
+	Level
+		Part
+		Points
+		UsedTime
+		Hint
+		MaxPoints
+		MaxTime 
+
+1 life = 3 points
+1 hit = 2 points
+
+
+Trail Making Test
+Exercise Game  
+5 points per correct answer
+
+total score = used life + used hints
+Spot, Jigzaw
+
+Total score = total time finish - used life -used hints
+
+
+game replay retrieving and recording
+
+- font size for image desc and choices exercise game
+- next level
+- health deduction for spot the difference
+- scoring system all games (had major adjustments)
+
+
+
+
+
+
+
+health 15
+hint -2
+wrong -3
+
+0-2 minutes = 20 points
+2-3 minutes = 15 points
+3-5 minutes = 10 points
+
+Total Score: Trail making score + Time
+Points 35
+
+Recent push fixes:
+- Percentage sa history 
+- Error pop up tmt 
+
+Levels in jigsaw 2x2 3x3
+
+Recent push changes:
+- Added controls for game replay preview (FOR NOW WE USE SAMPLE VIDEO FOR TESTING ONLY)
+
+Remaining Items:
+- Game Replay Video Recording
+- Jigsaw Drag Error
+
+
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
+Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+
+CommandInvokationFailure: Gradle build failed. 
+C:\Program Files\Java\jdk1.8.0_333\bin\java.exe -classpath "C:\Program Files\Unity\Hub\Editor\2021.3.6f1\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\gradle\lib\gradle-launcher-6.1.1.jar" org.gradle.launcher.GradleMain "-Dorg.gradle.jvmargs=-Xmx4096m" "assembleRelease"
+
+Build completed with a result of 'Failed' in 42 seconds (42383 ms)
+UnityEngine.GUIUtility:ProcessEvent (int,intptr,bool&)
+
+UnityEditor.BuildPlayerWindow+BuildMethodException: 4 errors
+  at UnityEditor.BuildPlayerWindow+DefaultBuildMethods.BuildPlayer (UnityEditor.BuildPlayerOptions options) [0x002da] in <44a70d1b13cf47e29810e30f45ffae08>:0 
+  at UnityEditor.BuildPlayerWindow.CallBuildMethods (System.Boolean askForBuildLocation, UnityEditor.BuildOptions defaultBuildOptions) [0x00080] in <44a70d1b13cf47e29810e30f45ffae08>:0 
+UnityEngine.GUIUtility:ProcessEvent (int,intptr,bool&)
+schemas.android.com
+
+
+
+
+
+
+
+
+
+
+jigsaw
+retry error (upload or system default image 
+puzzle drag
+2x2 layout 
+3x3 layout 
+update scoring 
+
+Remaining Items:
+Jigsaw Game:
+- Retry Error (Upload or system default image) 
+- Puzzle Drag 
+- Game difficulties (2x2 and 3x3) 
+- Update Scoring 
+
+- lock other levels 
+
+- Fixed update profile 
+- Settings in homepage 
+- Removed judgement in game history 
+- profile picture base on player gender 
+- Aligned dashboard and settings icon 
+- Updated description for Doc Lordy Santos 
+- Updated jigsaw scoring
+- Jigsaw drag piece 
+- Fixed account creation
+- Added Game stage stars
+
+
+
+- Stage stars
+- Stage locks
+- Fixed jigsaw game restart
+- Fixed jigsaw game next button
+- Fixed trail making test stage buttons
+- Scoring jigsaw respect grid and time
